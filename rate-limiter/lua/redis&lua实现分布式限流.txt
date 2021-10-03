@@ -1,0 +1,56 @@
+Lua是一个轻巧的脚本语言，短小精悍，也可以是一个编程语言
+应用场景：嵌入式开发、插件开发
+完美集成redis：redis内置lua解释器、redis执行lua时是原子性的、redis可对lua进行预编译
+
+运行lua脚本
+[root@node3-26 lua]# lua ratelimiter.lua
+reject
+
+Redis中运行lua脚本
+使用redis-cli运行
+eval "return 'hello'" 0
+给直接编写的脚本传参
+127.0.0.1:6379> eval "return { KEYS[1], ARGV[1] }" 2 k1 k2 v1 v2
+1) "k1"
+2) "v1"
+127.0.0.1:6379> eval "return { KEYS[1], ARGV[1] }" 1 k1 k2 v1 v2
+1) "k1"
+2) "k2"
+
+预编译脚本的使用
+127.0.0.1:6379> script load "return 'hello lua '..KEYS[1]..' '..ARGV[1]"
+"d4bee320dbead566c48d69513375077d9456a3a8"
+127.0.0.1:6379> evalsha d4bee320dbead566c48d69513375077d9456a3a8 2 key1 key2 val1 val2
+"hello lua key1 val1"
+
+预编译lua脚本是否存在
+127.0.0.1:6379> script exists d4bee320dbead566c48d69513375077d9456a3a8
+1) (integer) 1
+清空所有脚本
+127.0.0.1:6379> script flush
+OK
+127.0.0.1:6379> script exists d4bee320dbead566c48d69513375077d9456a3a8
+1) (integer) 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
