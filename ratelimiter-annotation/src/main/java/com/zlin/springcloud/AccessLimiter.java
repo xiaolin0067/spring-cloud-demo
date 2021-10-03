@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
+@Deprecated
 public class AccessLimiter {
 
     @Autowired
