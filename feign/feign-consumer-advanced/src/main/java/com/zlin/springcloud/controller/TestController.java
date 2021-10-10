@@ -4,6 +4,7 @@ import com.zlin.springcloud.IService;
 import com.zlin.springcloud.entity.Friend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,5 +25,13 @@ public class TestController {
     @GetMapping("/seyHi2")
     public Friend seyHi2() {
         return service.test(new Friend("FeignConsumerAdvancedApp"));
+    }
+
+    @GetMapping("/retry/{second}")
+    public String retry(@PathVariable("second") Integer second) {
+        if (second == null) {
+            second = 0;
+        }
+        return service.retry(second);
     }
 }

@@ -29,4 +29,18 @@ public class TestController implements IService {
         return friend;
     }
 
+    @Override
+    public String retry(Integer second) {
+        log.info("retry start, second {}, port {}", second, port);
+        while (second-- > 0) {
+            try {
+                Thread.sleep(second * 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        log.info("retry end, port {}", port);
+        return port;
+    }
+
 }

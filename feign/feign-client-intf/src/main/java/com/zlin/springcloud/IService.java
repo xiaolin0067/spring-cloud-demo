@@ -5,6 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author zlin
@@ -18,5 +19,8 @@ public interface IService {
 
     @PostMapping("/seyHi")
     Friend test(@RequestBody Friend friend);
+
+    @GetMapping("/retry")
+    String retry(@RequestParam("second") Integer second);
 
 }
