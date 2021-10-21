@@ -43,4 +43,9 @@ public class TestController implements IService {
         return port;
     }
 
+    @Override
+    public String error() {
+        throw new RuntimeException("black sheep");
+    }
+
 }

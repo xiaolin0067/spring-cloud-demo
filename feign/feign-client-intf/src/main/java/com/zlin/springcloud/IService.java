@@ -23,4 +23,7 @@ public interface IService {
     @GetMapping("/retry")
     String retry(@RequestParam("second") Integer second);
 
+    @GetMapping("/error")
+    String error();
+
 }
