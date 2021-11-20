@@ -22,6 +22,10 @@
 
 技术选型：对当前业务的支持、团队技术栈&学习成本、未来研发支持(社区，商业公司)、替换成本&运维成本
 
+hystrix三兄弟：hystrix、turbine、dashboard
+hystrix：降级、熔断
+turbine：收集指定hystrix服务的acturator的/actuator/hystrix.stream长链接接口产生的降级熔断信息
+dashboard：监控大盘，可监控hystrix或turbine的数据
 
 
 

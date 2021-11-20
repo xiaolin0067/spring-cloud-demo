@@ -1,6 +1,6 @@
-package com.imooc.springcloud.hystrix;
+package com.zlin.springcloud.hystrix;
 
-import com.imooc.springcloud.MyService;
+import com.zlin.springcloud.MyService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheKey;
 import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheResult;

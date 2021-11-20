@@ -1,7 +1,6 @@
-package com.imooc.springcloud;
+package com.zlin.springcloud;
 
-import com.imooc.springcloud.hystrix.Fallback;
-import com.zlin.springcloud.IService;
+import com.zlin.springcloud.hystrix.Fallback;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
