@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      name: config-consumer
+      uri: http://localhost:60000
+      profile: prod
+      label: master
+
+server:
+  port: 61000
+
+myWords: ${words}
