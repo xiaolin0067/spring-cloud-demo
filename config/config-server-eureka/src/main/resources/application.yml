@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: config-server-eureka
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/pangzl/config-repo.git
+          # 强制拉取资源文件
+          force-pull: true
+#          search-paths:
+#          username:
+#          password:
+
+server:
+  port: 60001
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.3.26:20000/eureka/

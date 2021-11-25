@@ -4,7 +4,10 @@ spring:
   cloud:
     config:
       name: config-consumer
-      uri: http://localhost:60000
+      # uri: http://localhost:60000
+      discovery:
+        enabled: true
+        service-id: config-server-eureka
       profile: prod
       label: master
 
@@ -12,3 +15,19 @@ server:
   port: 61000
 
 myWords: ${words}
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.3.26:20000/eureka/
