@@ -18,7 +18,7 @@ public class RefreshController {
     @Value("${words}")
     private String words;
 
-//    @Value("${food}")
+    @Value("${food}")
     private String food;
 
 
