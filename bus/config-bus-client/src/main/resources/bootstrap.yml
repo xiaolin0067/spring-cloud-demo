@@ -1,0 +1,45 @@
+# 刷新所有节点配置，可在任意一个服务上请求
+# POST http://localhost:60002/actuator/refresh
+
+spring:
+  application:
+    name: config-bus-client
+  rabbitmq:
+    host: 192.168.3.26
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    # 若引入了多个binder，使用该配置指定使用哪一个
+    stream:
+      default-binder: rabbit
+    config:
+      # 若spring.application.name的名称与要使用的配置文件名不一致，配置该属性指定使用的 application name
+      name: config-consumer
+      # uri: http://localhost:60000
+      discovery:
+        enabled: true
+        service-id: config-bus-server
+      profile: prod
+      label: master
+
+server:
+  port: 61001
+
+myWords: ${words}
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.3.26:20000/eureka/

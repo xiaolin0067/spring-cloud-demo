@@ -1,0 +1,8 @@
+encrypt:
+  key: 20051001
+
+# POST http://localhost:60001/encrypt
+# POST http://localhost:60001/decrypt
+
+# 刷新所有节点配置，可在任意一个服务上请求
+# POST http://localhost:60002/actuator/refresh

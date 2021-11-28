@@ -1,5 +1,5 @@
 encrypt:
   key: 20051001
 
-# POST http://localhost:60001/incrypt
+# POST http://localhost:60001/encrypt
 # POST http://localhost:60001/decrypt
