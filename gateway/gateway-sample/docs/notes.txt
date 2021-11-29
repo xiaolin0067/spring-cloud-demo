@@ -1,0 +1,35 @@
+# 查看所有路由规则
+GET http://localhost:65000/actuator/gateway/routes
+# 动态添加路由规则
+POST http://localhost:65000/actuator/gateway/routes/dynamic
+{
+	"predicates": [
+		{
+			"name": "Path",
+			"args": {
+				"_genkey_0": "/dynamic/**"
+			}
+		}
+	],
+	"filters": [
+		{
+			"name": "StripPrefix",
+			"args": {
+				"_genkey_0": "1"
+			}
+		}
+	],
+	"uri": "lb://FEIGN-CLIENT",
+	"order": 0
+}
+添加后使用如下url也可对feign client进行访问
+GET http://localhost:65000/dynamic/seyHi
+
+# 删除路由规则
+DELETE http://localhost:65000/actuator/gateway/routes/dynamic
+
+
+
+
+
+

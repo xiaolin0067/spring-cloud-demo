@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 自动生成路由规则
+          enabled: true
+          # 将服务名路由改为小写，配置后大写将不可用
+          lower-case-service-id: true
+
+server:
+  port: 65000
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.3.26:20000/eureka/
+
