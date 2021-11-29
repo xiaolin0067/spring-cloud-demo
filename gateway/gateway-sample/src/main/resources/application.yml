@@ -9,6 +9,16 @@ spring:
           enabled: true
           # 将服务名路由改为小写，配置后大写将不可用
           lower-case-service-id: true
+      routes:
+        - id: feignclient
+          uri: lb://FEIGN-CLIENT
+          # 断言，匹配哪些路径，Path Method
+          predicates:
+            - Path=/yml/**
+          # 过滤器，对URL进行处理
+          filters:
+            # 将匹配到的第一段uri删除
+            - StripPrefix=1
 
 server:
   port: 65000
