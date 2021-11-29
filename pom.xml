@@ -29,6 +29,8 @@
         <module>bus/config-bus-service</module>
         <module>bus/config-bus-client</module>
         <module>gateway/gateway-sample</module>
+        <module>gateway/auth-service-api</module>
+        <module>gateway/auth-service</module>
     </modules>
 
     <dependencyManagement>
