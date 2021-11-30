@@ -1,3 +1,5 @@
+# gateway网关业务场景：路由寻址(主要业务)、负载均衡、限流、鉴权
+
 # 查看所有路由规则
 GET http://localhost:65000/actuator/gateway/routes
 # 动态添加路由规则

@@ -2,6 +2,7 @@ package com.zlin.springcloud;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,8 @@ public class JwtService {
                     .withClaim(USER_NAME, username)
                     .build();
 
+//            DecodedJWT decodedJwt = verifier.verify(token);
+//            Map<String, Claim> map = decodedJwt.getClaims();
             verifier.verify(token);
             return true;
         } catch (Exception e) {
