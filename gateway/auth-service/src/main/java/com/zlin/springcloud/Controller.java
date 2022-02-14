@@ -25,15 +25,13 @@ public class Controller {
     private RedisTemplate redisTemplate;
 
     @PostMapping("/login")
-    @ResponseBody
-    public AuthResponse login(@RequestParam String username,
-                              @RequestParam String password) {
+    public AuthResponse login(@RequestParam String username, @RequestParam String password) {
 
         Account account = Account.builder()
                 .username(username)
                 .build();
 
-        // TODO 验证username + password
+        // 验证username + password
 
         String token = jwtService.token(account);
         account.setToken(token);
@@ -48,7 +46,6 @@ public class Controller {
     }
 
     @PostMapping("/refresh")
-    @ResponseBody
     public AuthResponse refresh(@RequestParam String refreshToken) {
         Account account = (Account) redisTemplate.opsForValue().get(refreshToken);
         if (account == null) {
@@ -72,11 +69,10 @@ public class Controller {
 
     @GetMapping("/verify")
     public AuthResponse verify(@RequestParam String token,
-
                                @RequestParam String username) {
         boolean success = jwtService.verify(token, username);
         return AuthResponse.builder()
-                // TODO 此处最好用invalid token之类的错误信息
+                // 此处最好用invalid token之类的错误信息
                 .code(success ? SUCCESS : USER_NOT_FOUND)
                 .build();
     }
